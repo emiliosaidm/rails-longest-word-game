@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h1>New Game</h1>
+  <div class="d-flex flex-row flex-wrap justify-content-sm-between">
+    <% @sample.each do |sample| %>
+      <div class="alert alert-primary p-5" role="alert">
+        <%= sample %>
+      </div>
+    <% end %>
+  <div>
+  <form action="/score" method="POST" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="input-group mb-3 w-100">
+      <input type="text" class="form-control" name="answer" placeholder="Your word" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <input id="token" name="sample" type="hidden" value="<%=@sample.join%>" />
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="submit">Button</button>
+      </div>
+    </div>
+  </form>
+</div>
